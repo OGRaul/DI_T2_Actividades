@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.cell.*?> 
+<?import javafx.collections.*?> 
+<?import Ej432LibretaDeDireccionesFXML.*?> 
+
+<!-- comentario -->
+
+<!-- Crenado el gridpane, enlazando con el controlador -->
+<GridPane alignment="CENTER" hgap="10.0" vgap="10.0"
+    xmlns:fx="http://javafx.com/fxml"
+    fx:controller="Ej432LibretaDeDireccionesFXML.FXMLController">
+    
+    <!-- añadiendo espacios -->
+    <padding>
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+    </padding> 
+    
+    <!-- Texto de cabecera con sus estilos y añadiendolo al gridpane -->
+    <Label style="-fx-font: NORMAL 20 Tahoma;" text="Address Book"                
+        GridPane.columnIndex="0" GridPane.rowIndex="0">
+    </Label>
+    
+    <!-- Creando la tabla y añadiendola al gridpane -->
+    <TableView fx:id="tableView" GridPane.columnIndex="0" 
+        GridPane.rowIndex="1">
+        
+        <columns>
+            
+          <!-- Primera columna  -->
+          <TableColumn fx:id="firstNameColumn" text="First Name" prefWidth="100">
+              
+            <!-- Añadiendo nombre -->
+            <cellValueFactory><PropertyValueFactory property="firstName" />
+            </cellValueFactory>
+            
+            <!-- Centrando -->
+            <cellFactory>
+                <FormattedTableCellFactory alignment="center">
+                </FormattedTableCellFactory>
+            </cellFactory>
+            
+          </TableColumn>
+          
+          <!-- Segunda columna -->
+          <TableColumn text="Last Name" prefWidth="100">
+              
+            <!-- Añadiendo nombre -->
+            <cellValueFactory><PropertyValueFactory property="lastName" />
+            </cellValueFactory>
+            
+          </TableColumn>
+          
+          <!-- Tercera columna -->
+          <TableColumn text="Email Address" prefWidth="200">
+              
+              <!-- Añadiendo nombre -->
+            <cellValueFactory><PropertyValueFactory property="email" />
+            </cellValueFactory>
+            
+          </TableColumn>
+          
+        </columns>  
+        
+        <!--  Arrays de la clase persona con la información de las tablas -->
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <Person firstName="Jacob" lastName="Smith"  
+                     email="jacob.smith@example.com"/>
+                <Person firstName="Isabella" lastName="Johnson" 
+                     email="isabella.johnson@example.com"/>
+                <Person firstName="Ethan" lastName="Williams" 
+                     email="ethan.williams@example.com"/>
+                <Person firstName="Emma" lastName="Jones"
+                     email="emma.jones@example.com"/>
+                <Person firstName="Michael" lastName="Brown" 
+                 email="michael.brown@example.com"/>
+            </FXCollections>
+        </items>
+            
+            <!-- Cambiando orden de los datos en base a la columna con firstName -->
+            <sortOrder>
+                <fx:reference source="firstNameColumn"/>
+            </sortOrder> 
+     
+    </TableView>
+    
+    <!-- Crea una caja horizontal para la función de añadir lineas -->
+    <HBox spacing="10" alignment="bottom_right" GridPane.columnIndex="0" 
+     GridPane.rowIndex="2">
+        
+        <!-- Creando los campos para añadir lineas -->
+        <TextField fx:id="firstNameField" promptText="First Name"
+             prefWidth="90"/>
+        <TextField fx:id="lastNameField" promptText="Last Name"
+             prefWidth="90"/>
+        <TextField fx:id="emailField" promptText="email"
+             prefWidth="150"/>
+        
+        <!-- Al pulsar, ejecuta el ActionEvent: #addPerson de FXMLController -->
+        <Button text="Add" onAction="#addPerson"/>
+     
+    </HBox>
+    
+</GridPane>

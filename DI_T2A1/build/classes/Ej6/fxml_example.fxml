@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?language javascript?> <!-- Para la versión con javascript interna -->
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<!-- Para probar otra version, quita la etiqueta de fin de comentario
+del a descripción y ponla despues del </GridPane> -->
+
+<!-- Versión que usa controlador de evento de botón como clase Java -->
+<GridPane fx:controller="Ej6.FXMLExampleController" styleClass="root"
+          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10" >
+
+    <padding><Insets top="25" right="25" bottom="10" left="25"/></padding>
+
+    <Text text="Welcome" id="welcome-text"
+            GridPane.columnIndex="0" GridPane.rowIndex="0"
+            GridPane.columnSpan="2"/>
+
+    <Label text="User Name:"
+        GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+
+    <TextField 
+        GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+    <Label text="Password:"
+        GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+
+    <PasswordField fx:id="passwordField" 
+        GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+        
+    <HBox spacing="10" alignment="bottom_right" 
+        GridPane.columnIndex="1" GridPane.rowIndex="4">
+        
+        <Button text="Sign In" onAction="#handleSubmitButtonAction"/>
+        
+    </HBox>
+
+    <Text fx:id="actiontarget"
+           GridPane.columnIndex="0" GridPane.columnSpan="2"
+     GridPane.halignment="RIGHT" GridPane.rowIndex="6"/>
+    
+    
+<stylesheets>
+    <URL value="@Login.css" />
+</stylesheets>
+    
+</GridPane>
+
+
+
+<!-- Versión que usa controlador de evento como javascript debajo del gridpane  
+<GridPane xmlns:fx="http://javafx.com/fxml" styleClass="root"
+          alignment="center" hgap="10" vgap="10" >
+    
+    <fx:script>
+        function handleSubmitButtonAction() {
+            actiontarget.setText("Calling the JavaScript internal code");
+             }
+    </fx:script>
+    
+    
+    <padding><Insets top="25" right="25" bottom="10" left="25"/></padding>
+
+    <Text text="Welcome" id="welcome-text"
+            GridPane.columnIndex="0" GridPane.rowIndex="0"
+            GridPane.columnSpan="2"/>
+
+    <Label text="User Name:"
+        GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+
+    <TextField 
+        GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+    <Label text="Password:"
+        GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+
+    <PasswordField fx:id="passwordField" 
+        GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+    
+    <HBox spacing="10" alignment="bottom_right" 
+        GridPane.columnIndex="1" GridPane.rowIndex="4">
+        
+        <Button text="Sign In" onAction="handleSubmitButtonAction(event);"/>
+        
+    </HBox>
+
+    <Text fx:id="actiontarget"
+           GridPane.columnIndex="0" GridPane.columnSpan="2"
+     GridPane.halignment="RIGHT" GridPane.rowIndex="6"/>
+    
+    
+<stylesheets>
+    <URL value="@Login.css" />
+</stylesheets>
+    
+</GridPane>
+-->
+
+<!-- Versión que usa controlador de evento en un archivo Javascript aparte 
+<GridPane xmlns:fx="http://javafx.com/fxml" styleClass="root"
+          alignment="center" hgap="10" vgap="10">
+    
+          
+<fx:script source="fxml_example.js"/>
+         
+    
+    <padding><Insets top="25" right="25" bottom="10" left="25"/></padding>
+
+    <Text text="Welcome" id="welcome-text"
+            GridPane.columnIndex="0" GridPane.rowIndex="0"
+            GridPane.columnSpan="2"/>
+
+    <Label text="User Name:"
+        GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+
+    <TextField 
+        GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+    <Label text="Password:"
+        GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+
+    <PasswordField fx:id="passwordField" 
+        GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+        
+    <HBox spacing="10" alignment="bottom_right" 
+        GridPane.columnIndex="1" GridPane.rowIndex="4">
+        
+        <Button text="Sign In" onAction="handleSubmitButtonAction(event);" />
+        
+    </HBox>
+
+    <Text fx:id="actiontarget"
+           GridPane.columnIndex="0" GridPane.columnSpan="2"
+     GridPane.halignment="RIGHT" GridPane.rowIndex="6"/>
+    
+    
+<stylesheets>
+    <URL value="@Login.css" />
+</stylesheets>
+    
+</GridPane>
+-->
